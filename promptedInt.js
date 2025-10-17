@@ -8,7 +8,7 @@ export function generatePromptedInt() {
         { prompt: "วันที่: ", value: getRandomInt(1, 31) },
         { prompt: "เดือน: ", value: getRandomInt(1, 12) },
         { prompt: "ปี: ", value: getRandomInt(1, 2024) },
-        { prompt: "จำนวนหนังสือที่มี: ", value: getRandomInt(1, 500) },
+        { prompt: "จำนวนหนังสือที่มี: ", value: getRandomInt(1, 500) + " เล่ม" },
         { prompt: "คะแนนสอบ: ", value: getRandomInt(0, 100) },
         { prompt: "ชั่วโมงทำงานต่อสัปดาห์: ", value: getRandomInt(1, 60) },
         { prompt: "น้ำหนักสัมภาระ: ", value: getRandomInt(1, 50) },
