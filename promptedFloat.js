@@ -17,7 +17,7 @@ export function generatePromptedFloat() {
         { prompt: "ระดับน้ำทะเล: ", value: getRandomFloat(1, 10, 2) + " เมตร" },
         { prompt: "อัตราแลกเปลี่ยน: ", value: getRandomFloat(1, 50, 2) + " บาทต่อดอลลาร์" },
         { prompt: "คะแนนสอบ: ", value: getRandomFloat(1, 100, 2) + " คะแนน" },
-        { prompt: "อัตราการเต้นของหัวใจ: ", value: getRandomFloat(1, 200, 2) + " ครั้งต่อนาที" },
+        { prompt: "อัตราความเร็ว: ", value: getRandomFloat(1, 200, 2) + " กม./ชม." },
         { prompt: "ระดับความสูง: ", value: getRandomFloat(1, 3000, 2) + " เมตรเหนือระดับน้ำทะเล" },
         { prompt: "ความชันของถนน: ", value: getRandomFloat(0, 20, 2) + " องศา" },
         { prompt: "การใช้พลังงานต่อวัน: ", value: getRandomFloat(1, 3000, 2) + " กิโลแคลอรี" },
