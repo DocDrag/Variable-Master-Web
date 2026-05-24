@@ -22,7 +22,7 @@ export function generatePromptedFloat() {
         { prompt: "ความชันของถนน: ", value: getRandomFloat(0, 20, 2) + " องศา" },
         { prompt: "การใช้พลังงานต่อวัน: ", value: getRandomFloat(1, 3000, 2) + " กิโลแคลอรี" },
         { prompt: "อัตราเติบโตทางเศรษฐกิจ: ", value: getRandomFloat(1, 10, 2) + " เปอร์เซ็นต์" },
-        { prompt: "ตัวเลขที่มีการหาร", value: ""}
+        { prompt: "เกรดเฉลี่ย (GPA): ", value: getRandomFloat(1, 4, 2) }
     ];
     const selectedPrompt = prompts[Math.floor(Math.random() * prompts.length)];
     return `${selectedPrompt.prompt}${selectedPrompt.value}`;

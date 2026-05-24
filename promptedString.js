@@ -1,4 +1,4 @@
-import { getRandomInt, getRandomFloat} from "./random.js";
+import { getRandomInt } from "./random.js";
 
 export function generatePromptedString() {
     const prompts = [
