@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const resetBtn = document.getElementById("reset-btn");
   const resultDiv = document.getElementById("result");
   const modeSelect = document.getElementById("mode-select");
+  const langSelect = document.getElementById("lang-select");
   const totalQuestionsEl = document.getElementById("total-questions");
   const correctAnswersEl = document.getElementById("correct-answers");
   const incorrectAnswersEl = document.getElementById("incorrect-answers");
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function generateButtons() {
     const mode = modeSelect.value;
+    const lang = langSelect.value;
     answerZone.innerHTML = ""; // ล้างปุ่มเก่า
 
     // reset ค่าปุ่มเดิม
@@ -119,14 +121,26 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonCount = 6;
     }
 
-    const nameBtn = [
-      "Type: int, Format: %d",
-      "Type: float, Format: %f",
-      "Type: char, Format: %c",
-      "Type: string, Format: %s",
-      "Type: bool/int, Format: %d (true, 1)",
-      "Type: bool/int, Format: %d (false, 0)",
-    ];
+    let nameBtn;
+    if (lang === "c") {
+      nameBtn = [
+        "Type: int, Format: %d",
+        "Type: float, Format: %f",
+        "Type: char, Format: %c",
+        "Type: string, Format: %s",
+        "Type: bool/int, Format: %d (true, 1)",
+        "Type: bool/int, Format: %d (false, 0)",
+      ];
+    } else {
+      nameBtn = [
+        "Type: int",
+        "Type: float",
+        "Type: char",
+        "Type: string",
+        "Type: bool (true, 1)",
+        "Type: bool (false, 0)",
+      ];
+    }
 
     const btnContainer = document.createElement("div");
     btnContainer.className = "btn-container"; // เพิ่มคลาสสำหรับการจัดการ layout ของปุ่ม
@@ -284,4 +298,5 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   modeSelect.addEventListener("change", changeModeSelect);
+  langSelect.addEventListener("change", changeModeSelect);
 });
