@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let total_questions = correctAnswers + incorrectAnswers;
     const correctPercentage =
-      totalQuestions > 0 ? (correctAnswers / total_questions) * 100 : 0;
+      total_questions > 0 ? (correctAnswers / total_questions) * 100 : 0;
     const incorrectPercentage =
       total_questions > 0 ? (incorrectAnswers / total_questions) * 100 : 0;
 
