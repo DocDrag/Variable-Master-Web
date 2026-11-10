@@ -29,61 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const streakContainer = document.getElementById("streak-container");
   const streakVal = document.getElementById("streak-val");
 
-  // ==========================================
-  // Sound Effects (Web Audio API - Offline/Static friendly)
-  // ==========================================
-  let soundEnabled = true;
-  let audioCtx = null;
-
-  function playSound(type) {
-    if (!isTeachingMode || !soundEnabled) return;
-    try {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      if (type === "correct") {
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(523.25, now); // C5
-        osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
-        osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
-        gain.gain.setValueAtTime(0.12, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
-        osc.start(now);
-        osc.stop(now + 0.32);
-      } else if (type === "incorrect") {
-        osc.type = "triangle";
-        osc.frequency.setValueAtTime(220, now); // A3
-        osc.frequency.setValueAtTime(164.81, now + 0.1); // E3
-        gain.gain.setValueAtTime(0.15, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
-        osc.start(now);
-        osc.stop(now + 0.28);
-      }
-    } catch (e) {
-      // AudioContext not supported or restricted
-    }
-  }
-
-  const btnSound = document.getElementById("btn-sound-toggle");
-  if (btnSound) {
-    btnSound.addEventListener("click", () => {
-      soundEnabled = !soundEnabled;
-      btnSound.innerHTML = soundEnabled
-        ? '<i class="fas fa-volume-up"></i>'
-        : '<i class="fas fa-volume-mute text-danger"></i>';
-      btnSound.title = soundEnabled ? "เปิด/ปิด เสียงเอฟเฟกต์ (เปิดอยู่)" : "เปิด/ปิด เสียงเอฟเฟกต์ (ปิดอยู่)";
-    });
-  }
-
   // จำนวนปุ่มทั้งหมดในเว็บ
   let buttonCount = 0;
 
@@ -159,12 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
       correctAnswers++;
       streak++;
       Answer = true;
-      playSound("correct");
     } else {
       incorrectAnswers++;
       streak = 0;
       Answer = false;
-      playSound("incorrect");
     }
 
     if (streakContainer && streakVal) {
