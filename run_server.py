@@ -145,10 +145,19 @@ def get_network_ips():
 
     return tailscale_ip, wifi_ip, host_ips
 
-SERVER_PORT = find_free_port(8000)
+SERVER_PORT = find_free_port(8001)
 TAILSCALE_IP, WIFI_IP, ALL_IPS = get_network_ips()
 
 class RemoteAppHandler(SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=BASE_DIR, **kwargs)
+
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
+
     # Set explicit extensions map to prevent Windows registry MIME bugs
     extensions_map = SimpleHTTPRequestHandler.extensions_map.copy()
     extensions_map.update({
