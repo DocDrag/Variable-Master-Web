@@ -145,7 +145,7 @@ def get_network_ips():
 
     return tailscale_ip, wifi_ip, host_ips
 
-SERVER_PORT = find_free_port(8001)
+SERVER_PORT = find_free_port(8000)
 TAILSCALE_IP, WIFI_IP, ALL_IPS = get_network_ips()
 
 class RemoteAppHandler(SimpleHTTPRequestHandler):
